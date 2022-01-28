@@ -4,15 +4,15 @@
 #include<string.h>
 
 int main() {
-	int opt = 5, n_words = 0;  //davame random st-st na opt !={0,1,2,3,4}
+	int opt = 5, n_words = 0;  
 	char dictionary[3][50][30];
-	//masiv, koito shte sudurja 3 ezika, s po max 50 dumi, dulgi max 30 bukvi
-	n_words = 5;  //broq na dumite, predvaritelno vkarani
+	
+	n_words = 5;  
 	strcpy(dictionary[0][0], "nula");
 	strcpy(dictionary[0][1], "edno");
 	strcpy(dictionary[0][2], "dve");
 	strcpy(dictionary[0][3], "tri");
-	strcpy(dictionary[0][4], "chetiri");  //predvaritelno vuvedeni dumi i na 3te ezika
+	strcpy(dictionary[0][4], "chetiri");  
 
 	strcpy(dictionary[1][0], "zero");
 	strcpy(dictionary[1][1], "one");
@@ -26,7 +26,7 @@ int main() {
 	strcpy(dictionary[2][3], "tri");
 	strcpy(dictionary[2][4], "chetuiri");
 
-	while (opt) {  //bezkraen cikul,koito nqma da spre dokato opt==0;
+	while (opt) {  
 		printf("Select an option:\n");
 		printf("0: Quit\n");
 		printf("1: Enter a word\n");
@@ -53,12 +53,12 @@ int main() {
 			printf("Enter a word that you want to delete: ");
 			scanf("%s", word);
 			for (int l = 0; l < 3; l++) {
-				for (int i = 0; i < n_words; i++) {      //obhojdame vuvedenite dumi
-					if (strcmp(dictionary[l][i], word) == 0) { //proverqvame dali dumata,koqto iskame da iztriem e v rechnika
-						for (int j = 0; j < 3; j++) {   //iztrivame dumata i ot 3te ezika
+				for (int i = 0; i < n_words; i++) {      
+					if (strcmp(dictionary[l][i], word) == 0) {
+						for (int j = 0; j < 3; j++) { 
 							if (i != n_words - 1) {
 								strcpy(dictionary[j][i], dictionary[j][n_words - 1]);
-								//poslednata duma otiva na mqstoto na tazi,koqto iskame da iztriem
+								
 							}
 							strcpy(dictionary[j][n_words - 1], "");
 						}
@@ -110,7 +110,7 @@ int main() {
 
 		case 4: {
 			int l;
-			char rnd[20]; //niz,koito shte izpolzvame za sortiraneto
+			char rnd[20]; 
 			printf("1.Bulgarian\n");
 			printf("2.English\n");
 			printf("3.Russian\n");
@@ -120,10 +120,7 @@ int main() {
 
 			for (int i = 0; i < n_words; i++) {
 				for (int j = i + 1; j < n_words; j++) {
-					if (strcmp(dictionary[l][i], dictionary[l][j]) > 0) {  //sravnqvame 2 susedni dumi
-						//strcmp shte vrushta cqlo chislo >0,ako purvata duma zapochva s bukva, koqto ima po-golqma st-st ot vtorata, vzeta ot ASCII tablicata
-						//t.e. vtorata duma trqbva da e predi purvata
-						//za celta razmenqme mestata im i na 3te ezika,izpolzvaiki rnd[20];
+					if (strcmp(dictionary[l][i], dictionary[l][j]) > 0) {  
 						for (int n = 0; n < 3; n++) {  //minavame prez 3te ezika
 							strcpy(rnd, dictionary[n][i]);
 							strcpy(dictionary[n][i], dictionary[n][j]);
